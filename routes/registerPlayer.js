@@ -7,8 +7,11 @@ router.post("/", async (req, res) => {
   const newRegister = req.body;
   console.log(req);
   const isExistUserName = await Register.findOne({ username: req.body.username });
-  if (isExistUserName) return res.send("Username is already taken");
+  if (isExistUserName) return res.send({data:"Username is already taken"});
 
+if(!newRegister.username)return  res.status(200).send({data:"Username is empty"});
+
+if(!newRegister.password)return  res.status(200).send({data:"Password is empty"});
 
   const register = new Register({
     username: newRegister.username,
@@ -16,7 +19,7 @@ router.post("/", async (req, res) => {
   });
   var registerResp = await register.save();
   console.log(registerResp);
-  res.status(200).send({data:"Registraion sucess"});
+  res.status(200).send({data:"Registration success"});
 });
 
 module.exports = router;
