@@ -6,6 +6,7 @@ const register = require('./routes/registerPlayer');
 const login = require('./routes/loginPlayer');
 const bestPlayre = require('./routes/getBestPlayers');
 
+const port = process.env.PORT || 9000;
 const app = express();
 const connectionUrl ="mongodb://root:aU5s24zGL2S3lIJd@cluster0-shard-00-00.d0cle.mongodb.net:27017,cluster0-shard-00-01.d0cle.mongodb.net:27017,cluster0-shard-00-02.d0cle.mongodb.net:27017/player_db?ssl=true&replicaSet=atlas-m8k1ck-shard-0&authSource=admin&retryWrites=true&w=majority";
 
@@ -28,5 +29,5 @@ app.use("/api/register",register);
 app.use("/api/login",login);
 app.use("/api/getbestplayers",bestPlayre);
 
-app.listen(9090,()=> console.log('Listining on port 9090...'));
+app.listen(port, () => console.log(`Port : ${port}`));
 
