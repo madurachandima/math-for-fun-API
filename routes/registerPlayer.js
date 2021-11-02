@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const newRegister = req.body;
-
+  console.log(req);
   const isExistUserName = await Register.findOne({ username: req.body.username });
   if (isExistUserName) return res.send("Username is already taken");
 

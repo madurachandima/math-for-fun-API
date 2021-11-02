@@ -28,5 +28,5 @@ app.use("/api/register",register);
 app.use("/api/login",login);
 app.use("/api/getbestplayers",bestPlayre);
 
-app.listen(3000,()=> console.log('Listining on port 3000...'));
+app.listen(9090,()=> console.log('Listining on port 9090...'));
 
