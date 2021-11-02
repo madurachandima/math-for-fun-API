@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
   });
   var registerResp = await register.save();
   console.log(registerResp);
-  res.status(200).send({data:"Registraion sucess."});
+  res.status(200).send({data:"Registraion sucess"});
 });
 
 module.exports = router;
