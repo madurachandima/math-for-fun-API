@@ -1,4 +1,4 @@
-const Player = require("../model/player.js");
+const Player = require("../model/player_score.js");
 const verify = require("./token/verfyToken");
 const express = require("express");
 

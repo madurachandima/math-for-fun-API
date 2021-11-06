@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const player = mongoose.model(
-  "player",
+  "player_score",
   new mongoose.Schema({
     playerId: String,
     playerName: String,
