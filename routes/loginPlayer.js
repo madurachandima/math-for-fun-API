@@ -4,22 +4,25 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const newRegister = req.body;
-  const isExistUserName = await Register.findOne({ auth_id: newRegister.auth_id });
-  if (isExistUserName) {
+  console.log(newRegister);
+  const isExistUser = await Register.findOne({ auth_id: newRegister.auth_id });
+  console.log(isExistUser);
+  if (isExistUser) {
     res.status(200).send({
-      auth_id: isExistUserName.auth_id,
-      username: isExistUserName.username,
-      country: isExistUserName.country,
-      date: isExistUserName.date,
+      auth_id: isExistUser.auth_id,
+      username: isExistUser.username,
+      country: isExistUser.country,
+      date: isExistUser.date,
     });
   } else {
     const register = new Register({
-      auth_id: isExistUserName.auth_id,
-      username: isExistUserName.username,
-      country: isExistUserName.country,
-      date: isExistUserName.date,
+      auth_id: newRegister.auth_id,
+      username: newRegister.username,
+      country: newRegister.country,
+      date: newRegister.date,
     });
     var registerResp = await register.save();
+    console.log(registerResp);
     res.status(200).send(registerResp);
   }
 });
