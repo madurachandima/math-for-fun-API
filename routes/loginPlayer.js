@@ -8,12 +8,7 @@ router.post("/", async (req, res) => {
   const isExistUser = await Register.findOne({ auth_id: newRegister.auth_id });
   console.log(isExistUser);
   if (isExistUser) {
-    res.status(200).send({
-      auth_id: isExistUser.auth_id,
-      username: isExistUser.username,
-      country: isExistUser.country,
-      date: isExistUser.date,
-    });
+    res.status(200).send(isExistUser);
   } else {
     const register = new Register({
       auth_id: newRegister.auth_id,
