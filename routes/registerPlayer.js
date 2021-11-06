@@ -13,9 +13,12 @@ if(!newRegister.username)return  res.status(200).send({data:"Username is empty"}
 
 if(!newRegister.password)return  res.status(200).send({data:"Password is empty"});
 
+if(!newRegister.country)return  res.status(200).send({data:"country is empty"});
+
   const register = new Register({
     username: newRegister.username,
     password: newRegister.password,
+    countrey: newRegister.country,
   });
   var registerResp = await register.save();
   console.log(registerResp);
