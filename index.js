@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
+
 const saveScore = require('./routes/savePlayer');
-const register = require('./routes/registerPlayer');
+const getPlayer = require('./routes/getPlayerById');
 const login = require('./routes/loginPlayer');
 const bestPlayre = require('./routes/getBestPlayers');
 
@@ -25,8 +26,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/save",saveScore);
-app.use("/api/register",register);
+
 app.use("/api/login",login);
+app.use("/api/getplayer",getPlayer);
 app.use("/api/getbestplayers",bestPlayre);
 
 app.listen(port, () => console.log(`Port : ${port}`));

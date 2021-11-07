@@ -1,18 +1,14 @@
 const Player = require("../model/player_score.js");
-const verify = require("./token/verfyToken");
 const express = require("express");
 
 
 const router = express.Router();
 
-router.post("/",verify, async (req, res) => {
+router.post("/", async (req, res) => {
   const newPalyer = req.body;
-
-  //get player using id
-  // is exsist check current score is grater than old score
-  // is true update score
+console.log(newPalyer);
   var resp = await Player.findOneAndUpdate(
-    { playerId: newPalyer.playerId },
+    { auth_id: newPalyer.auth_id },
     {
       $max: {
         playerScore: newPalyer.playerScore,
@@ -22,6 +18,7 @@ router.post("/",verify, async (req, res) => {
 
   if (!resp) {
     const player = new Player({
+      auth_id:newPalyer.auth_id,
       playerId: newPalyer.playerId,
       playerName: newPalyer.playerName,
       playerScore: newPalyer.playerScore,
@@ -30,7 +27,7 @@ router.post("/",verify, async (req, res) => {
     res.status(200).send(playerResp);
   } else {
     const isExistPlayer = await Player.findOne({
-      playerId: newPalyer.playerId,
+      auth_id: newPalyer.auth_id,
     });
     res.status(200).send(isExistPlayer);
   }
