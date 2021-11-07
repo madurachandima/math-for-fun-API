@@ -7,6 +7,7 @@ const player = mongoose.model(
     playerId: String,
     playerName: String,
     playerScore: Number,
+    country:String,
     date: { type: Date, default: Date.now },
   })
 );
